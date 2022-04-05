@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="En">
+<head>
+    <meta charset="UTF-8">
+    <title> TopLearn | @ViewData["Title"] </title>
+    <partial name="_MetaTags" />
+    <partial name="_Styles" />
+    <script src="/js/jquery.min.js"></script>
+</head>
+<body>
+    <script src="/js/modernizr-custom.js"></script>
+
+    <div class="landing-layer">
+        <div class="container">
+            <nav>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 text-left">
+                        <ul>
+                            <li>
+                                <a href=""> Home </a>
+                                <a href=""> Courses</a>
+                                <a href=""> About Us</a>
+                                <a href=""> Contact Us</a>
+                                <a href=""> Join Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="clientarea">
+                            <div class="loggein text-right">
+                                <i class="zmdi zmdi-account"></i> 
+                                <a href="#"> Welcome Saeed !</a> 
+                            </div>
+                            <div class="signin text-right hidden">
+                                <i class="zmdi zmdi-account"></i>
+                                <a href=""> Login </a> /
+                                <a href=""> Register </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <header>
+                <a href="" class="logo"><img src="/images/logo.png"></a>
+                <h1> With Our Great Teachers </h1>
+                <h2> Learn , Experience and Get to Work</h2>
+                <h3> With Minimum Costs</h3>
+            </header>
+            <div class="search-form">
+                <form>
+                    <button><i class="zmdi zmdi-search"></i></button>
+                    <input type="text" name="" placeholder="What do you like to Learn ?">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <partial name="_MainMenu" />
+
+
+    @RenderBody()
+
+
+    <partial name="_Footer" />
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
