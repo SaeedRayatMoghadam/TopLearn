@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Services;
@@ -14,12 +15,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-#region IOC
+#region Authentication
 
-builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/Logout";
+    options.ExpireTimeSpan = TimeSpan.FromMilliseconds(43200);
+});
 
 #endregion
-
 
 #region DataBase
 
@@ -30,9 +40,17 @@ builder.Services.AddDbContext<TopLearnDbContext>(options =>
 
 #endregion
 
+#region IOC
+
+builder.Services.AddTransient<IUserService, UserService>();
+
+#endregion
+
 var app = builder.Build();
 
 app.UseStaticFiles();
+
+app.UseAuthentication();
 
 app.UseRouting();
 

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.Account;
@@ -34,7 +37,23 @@ namespace TopLearn.Web.Controllers
             {
                 if (user.IsActive)
                 {
-                    //TODO : Login
+                    var claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                        new Claim(ClaimTypes.Name,user.UserName),
+                        new Claim(ClaimTypes.Email,user.Email)
+                    };
+
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principals = new ClaimsPrincipal(identity);
+
+                    var properties = new AuthenticationProperties()
+                    {
+                        IsPersistent = model.RememberMe
+                    };
+
+                    HttpContext.SignInAsync(principals, properties);
+
                     return Redirect("/");
                 }
                 else
@@ -99,6 +118,16 @@ namespace TopLearn.Web.Controllers
 
         #endregion
 
+        #region LogOut
+
+        [Route("/Logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return Redirect("/");
+        }
+
+        #endregion
 
         #region Activate Account
 
