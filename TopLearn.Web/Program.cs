@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Services;
+using TopLearn.Core.Utils;
 using TopLearn.Data.Context;
 
 IConfiguration configuration = new ConfigurationBuilder()
@@ -43,6 +44,7 @@ builder.Services.AddDbContext<TopLearnDbContext>(options =>
 #region IOC
 
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
 
 #endregion
 

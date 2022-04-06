@@ -1,4 +1,5 @@
-﻿using TopLearn.Core.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using TopLearn.Core.Interfaces;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.Account;
 using TopLearn.Data.Context;
@@ -13,6 +14,22 @@ public class UserService : IUserService
     public UserService(TopLearnDbContext context)
     {
         _context = context;
+    }
+
+    public User Get(string email)
+    {
+        return _context.Users.SingleOrDefault(x => x.Email == email);
+    }
+
+    public User GetByActiveCode(string activeCode)
+    {
+        return _context.Users.SingleOrDefault(x => x.ActiveCode == activeCode);
+    }
+
+    public void Update(User user)
+    {
+        _context.Users.Update(user);
+        _context.SaveChanges(); 
     }
 
     public bool IsUserNameExist(string userName)

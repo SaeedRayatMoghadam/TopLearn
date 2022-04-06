@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using TopLearn.Core.Interfaces;
+using TopLearn.Core.Senders;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.Account;
 using TopLearn.Data.Models.Users;
@@ -12,10 +13,12 @@ namespace TopLearn.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IViewRenderService _renderService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IViewRenderService renderService)
         {
             _userService = userService;
+            _renderService = renderService;
         }
 
         #region Login
@@ -111,7 +114,9 @@ namespace TopLearn.Web.Controllers
 
             _userService.Register(user);
 
-            //TODO: Send Activation Email
+            //Send Activation Email
+            //string body = _renderService.RenderToStringAsync("_ActiveEmail", user);
+            //EmailSender.Send(user.Email, "Account Activation", body);
 
             return RedirectToAction("Login");
         }
@@ -136,6 +141,68 @@ namespace TopLearn.Web.Controllers
             ViewBag.IsActive = _userService.ActivateAccount(id);
 
             return View();
+        }
+
+        #endregion
+
+        #region ForgotPassword
+
+        [Route("ForgotPassword")]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("ForgotPassword")]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = _userService.Get(model.Email);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("Email","Invalid Inputs .");
+                return View(model);
+            }
+
+            string body = _renderService.RenderToStringAsync("_ForgotPassword", user);
+            EmailSender.Send(user.Email, "Reset Password", body);
+
+            return View();
+        }
+
+        #endregion
+
+        #region Reset Password
+
+        [Route("ResetPassword")]
+        public IActionResult ResetPassword(string id)
+        {
+            return View(new ResetPasswordViewModel()
+            {
+                ActiveCode = id
+            });
+        }
+
+        [HttpPost]
+        [Route("ResetPassword")]
+        public IActionResult ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = _userService.GetByActiveCode(model.ActiveCode);
+
+            if (user == null)
+                return NotFound();
+
+            user.Password = model.Password.EncodeToMd5();
+            _userService.Update(user);
+
+            return Redirect("/Login");
         }
 
         #endregion
