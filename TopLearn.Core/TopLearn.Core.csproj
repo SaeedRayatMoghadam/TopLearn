@@ -11,6 +11,11 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="Utils\" />
+    <Folder Include="ViewModels\Account\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TopLearn.Data\TopLearn.Data.csproj" />
   </ItemGroup>
 
 </Project>

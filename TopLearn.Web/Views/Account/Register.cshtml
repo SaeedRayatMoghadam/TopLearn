@@ -1,0 +1,68 @@
+﻿@model TopLearn.Core.ViewModels.Account.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">TopLearn</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Register</li>
+        </ul>
+    </nav>
+</div>
+
+<main class="client-page">
+    <div class="container-content">
+
+        <header class="text-center">
+            <img src="/images/register.png" alt="Register" />
+            <h2> Register </h2>
+        </header>
+
+        <div class="form-layer">
+
+            <form asp-controller="Account" asp-action="Register" method="post">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="username"><i class="zmdi zmdi-account"></i></span>
+                    <input type="text" class="form-control" asp-for="UserName" placeholder="UserName" aria-describedby="username">
+                </div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="email-address"><i class="zmdi zmdi-email"></i></span>
+                    <input type="email" class="form-control" asp-for="Email" placeholder="Email" aria-describedby="email-address">
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="password"><i class="zmdi zmdi-lock"></i></span>
+                    <input type="password" class="form-control" asp-for="Password" placeholder="Password" aria-describedby="password">
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="password"><i class="zmdi zmdi-lock"></i></span>
+                    <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Confirm Password" aria-describedby="confirm password">
+                </div>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+
+                <div class="accept-rules">
+                    <label><input type="checkbox" name="">  Accept Terms </label>
+                </div>
+
+                <div class="link">
+                    <a href=""> <i class="zmdi zmdi-assignment"></i>Our Terms</a>
+                    <a asp-controller="Account" asp-action="Login"> <i class="zmdi zmdi-account"></i> Login </a>
+                </div>
+
+                <button type="submit" class="btn btn-primary"> Register </button>
+
+            </form>
+        </div>
+
+    </div>
+</main>

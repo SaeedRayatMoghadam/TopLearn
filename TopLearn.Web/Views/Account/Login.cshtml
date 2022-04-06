@@ -1,0 +1,55 @@
+﻿@model TopLearn.Core.ViewModels.Account.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">TopLearn</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Login</li>
+        </ul>
+    </nav>
+</div>
+
+<main class="client-page">
+    <div class="container-content">
+
+        <header class="text-center">
+            <img src="/images/login.png" alt="Login" />
+            <h2> Login </h2>
+        </header>
+
+        <div class="form-layer">
+
+            <form asp-controller="Account" asp-action="Login" method="post">
+
+                <div class="input-group">
+                        <span class="input-group-addon" id="email-address"><i class="zmdi zmdi-email"></i></span>
+                        <input type="text" class="form-control" asp-for="Email" placeholder="Email" aria-describedby="email-address">
+                </div>
+                        <span class="text-danger" asp-validation-for="Email"></span>
+
+                <div class="input-group">
+                        <span class="input-group-addon" id="password"><i class="zmdi zmdi-lock"></i></span>
+                        <input type="text" class="form-control" asp-for="Password" placeholder="Password" aria-describedby="password">
+                </div>
+                        <span class="text-danger" asp-validation-for="Password"></span>
+
+                <div class="remember-me">
+                    <label><input type="checkbox" name="remember me" asp-for="RememberMe">  Remember Me </label>
+                </div>
+
+                <div class="link">
+                    <a href=""> <i class="zmdi zmdi-lock"></i> Forgot Password ?</a>
+                    <a asp-controller="Account" asp-action="Register"> <i class="zmdi zmdi-account"></i> Register </a>
+                </div>
+
+                <button type="submit" class="btn btn-info"> Login </button>
+
+            </form>
+        </div>
+
+    </div>
+</main>

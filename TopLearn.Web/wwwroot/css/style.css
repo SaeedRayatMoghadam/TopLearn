@@ -31,6 +31,10 @@ body {
 /* - - - - - Colors - - - - -  */
 
 
+.logo img{
+    width: 200px !important;
+}
+
 
 a:link, a:hover, a:active {
     text-decoration: none;
@@ -224,8 +228,8 @@ a, i, input[type="submit"], form button {
 
         .main-menu nav > ul > li > ul {
             position: absolute;
-            top: 50px;
-            right: 0;
+            top: 53px;
+            left: 0;
             background-color: #1E90FF;
             padding: 5px 10px;
             border-bottom: 3px solid #002147;
@@ -353,12 +357,11 @@ footer .top-footer {
     }
 
         .client-page .container-content .input-group {
-            padding: 10px 0;
+            padding: 1px 0;
             width: 100%
         }
 
         .client-page .container-content .input-group-addon {
-            width: 55px;
             font-size: 18px
         }
 

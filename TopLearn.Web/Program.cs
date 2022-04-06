@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TopLearn.Core.Interfaces;
+using TopLearn.Core.Services;
 using TopLearn.Data.Context;
 
 IConfiguration configuration = new ConfigurationBuilder()
@@ -11,11 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-//DataBase Setting
+
+#region IOC
+
+builder.Services.AddTransient<IUserService, UserService>();
+
+#endregion
+
+
+#region DataBase
+
 builder.Services.AddDbContext<TopLearnDbContext>(options =>
 {
     options.UseSqlServer(configuration.GetConnectionString("TopLearnDBConnection"));
 });
+
+#endregion
 
 var app = builder.Build();
 
