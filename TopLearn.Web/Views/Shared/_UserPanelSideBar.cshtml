@@ -1,0 +1,36 @@
+﻿@using TopLearn.Core.Interfaces
+@using TopLearn.Core.Utils
+@inject IUserService _userService
+
+@{
+    var user = _userService.GetUserPanelSideBarInfo(User.Identity.Name);
+}
+
+<div class="col-md-3 col-sm-4 col-xs-12">
+    <aside>
+
+        <div class="avatar-layer">
+            <div class="img-layer">
+                <a href="" class="change-image"><i class="zmdi zmdi-edit"></i></a>
+                <img src="/images/@user.Avatar">
+            </div>
+            <div class="detail">
+                <span> @user.UserName </span>
+                <span> Registered : @user.RegisterDate.ToShamsi() </span>
+            </div>
+        </div>
+
+        <section>
+            <header><h3> DashBoard </h3></header>
+            <div class="inner">
+                <ul>
+                    <li><a href="/UserPanel"> User Panel </a></li>
+                    <li><a href="/UserPanel/EditProfile"> Edit Account</a></li>
+                    <li><a href="/UserPanel/ChangePassword"> Change Password </a></li>
+                    <li><a href=""> Account Settings </a></li>
+                    <li><a href="/Logout"> Logout </a></li>
+                </ul>
+            </div>
+        </section>
+    </aside>
+</div>

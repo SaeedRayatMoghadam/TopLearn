@@ -2,6 +2,7 @@
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.Account;
+using TopLearn.Core.ViewModels.UserPanel;
 using TopLearn.Data.Context;
 using TopLearn.Data.Models.Users;
 
@@ -26,10 +27,43 @@ public class UserService : IUserService
         return _context.Users.SingleOrDefault(x => x.ActiveCode == activeCode);
     }
 
+    public UserPanelSideBarViewModel GetUserPanelSideBarInfo(string userName)
+    {
+        return _context.Users.Where(u => u.UserName == userName).Select(u => new UserPanelSideBarViewModel()
+        {
+            UserName = u.UserName,
+            RegisterDate = u.RegisterDate,
+            Avatar = u.Avatar
+        }).Single();
+    }
+
+    public EditUserProfileViewModel GetUserForEdit(string userName)
+    {
+        return _context.Users.Where(u => u.UserName == userName).Select(u => new EditUserProfileViewModel()
+        {
+            UserName = u.UserName,
+            Email = u.Email
+        }).Single();
+    }
+
+    public bool CheckPassword(string userName, string password)
+    {
+        var pass = password.EncodeToMd5();
+        return _context.Users.Any(u => u.UserName == userName && u.Password == pass);
+    }
+
+    public void ChangePassword(string userName, string password)
+    {
+        var user = GetByUserName(userName);
+        user.Password = password.EncodeToMd5();
+
+        Update(user);
+    }
+
     public void Update(User user)
     {
         _context.Users.Update(user);
-        _context.SaveChanges(); 
+        _context.SaveChanges();
     }
 
     public bool IsUserNameExist(string userName)
@@ -71,5 +105,33 @@ public class UserService : IUserService
         _context.SaveChanges();
 
         return true;
+    }
+
+    public User GetByUserName(string userName)
+    {
+        return _context.Users.SingleOrDefault(u => u.UserName == userName);
+    }
+
+    public UserInfoViewModel GetUserInfo(string userName)
+    {
+        var user = GetByUserName(userName);
+
+        return new UserInfoViewModel()
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+            RegisterDate = user.RegisterDate,
+            Wallet = 0
+        };
+    }
+
+    public void EditProfile(string userName, EditUserProfileViewModel profile)
+    {
+        var user = GetByUserName(userName);
+
+        user.UserName = profile.UserName;
+        user.Email = profile.Email;
+
+        Update(user);
     }
 }
