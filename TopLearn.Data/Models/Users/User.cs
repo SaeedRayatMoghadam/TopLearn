@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TopLearn.Data.Models.Wallets;
 
 namespace TopLearn.Data.Models.Users;
 
@@ -30,6 +31,7 @@ public class User : BaseEntity
     #region Relations
 
     public virtual List<UserRole> UserRoles { get; set; }
+    public virtual List<Wallet> Wallets { get; set; }
 
     #endregion
 }

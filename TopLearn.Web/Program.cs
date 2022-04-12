@@ -44,6 +44,7 @@ builder.Services.AddDbContext<TopLearnDbContext>(options =>
 #region IOC
 
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IWalletService, WalletService>();
 builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
 
 #endregion

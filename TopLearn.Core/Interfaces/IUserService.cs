@@ -8,6 +8,7 @@ public interface IUserService
 {
     User Get(string email);
     User GetByActiveCode(string activeCode);
+    int GetUserId(string userName);
     
     //UserPanel Methods
     User GetByUserName(string userName);

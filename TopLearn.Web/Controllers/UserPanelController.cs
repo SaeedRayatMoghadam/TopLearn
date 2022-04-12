@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Globalization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.UserPanel;
@@ -8,9 +10,12 @@ namespace TopLearn.Web.Controllers
     public class UserPanelController : Controller
     {
         private readonly IUserService _userService;
-        public UserPanelController(IUserService userService)
+        private readonly IWalletService _walletService;
+
+        public UserPanelController(IUserService userService, IWalletService walletService)
         {
             _userService = userService;
+            _walletService = walletService;
         }
 
         public IActionResult Index()
@@ -62,6 +67,34 @@ namespace TopLearn.Web.Controllers
             _userService.ChangePassword(userName, model.NewPassword);
 
             return Redirect("/Logout");
+        }
+
+        [Route("/UserPanel/Wallet")]
+        [HttpGet]
+        public IActionResult Wallet()
+        {
+            ViewBag.TransactionHistory = _walletService
+                .GetWalletHistory(_userService.GetUserId(User.Identity.Name));
+            return View();
+        }
+        
+        [Route("UserPanel/ChargeWallet")]
+        [HttpPost]
+        public IActionResult ChargeWallet(ChargeWalletViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.TransactionHistory = _walletService
+                    .GetWalletHistory(_userService.GetUserId(User.Identity.Name));
+                return RedirectToAction("Wallet",model);
+            }
+
+            _walletService
+                .ChargeWallet(_userService.GetUserId(User.Identity.Name),model.Amount,"Deposit to Account");
+
+            //TODO Online Payment
+
+            return null;
         }
     }
 }

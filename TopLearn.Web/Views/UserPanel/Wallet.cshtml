@@ -1,0 +1,85 @@
+﻿@using TopLearn.Core.Utils
+@using TopLearn.Core.ViewModels.UserPanel
+@model TopLearn.Core.ViewModels.UserPanel.WalletViewModel
+
+@{
+    ViewData["Title"] = "Wallet";
+}
+
+
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">TopLearn</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Wallet</li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account">
+            <div class="row">
+                <partial name="_UserPanelSideBar" />
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <section class="user-account-content">
+                        <header><h1> Charge Wallet </h1></header>
+                        <div class="inner form-layer">
+                            <form asp-action="ChargeWallet" method="post">
+
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="number"><i class="zmdi zmdi-money-box"></i></span>
+                                            <input type="number" class="form-control" asp-for="Amount" placeholder="Amount" aria-describedby="amount">
+                                        </div>
+                                        <span asp-validation-for="Amount" class="text-danger"></span>
+                                        <button class="btn btn-primary"> Charge </button>
+                                    </div>
+                                    
+                                </div>
+
+                            </form>
+                        </div>
+                    </section>
+                    <div>
+                        @{
+                            List<WalletViewModel> model = ViewBag.TransactionHistory as List<WalletViewModel>;
+                        }
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Amount</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in model)
+                                {
+                                    <tr>
+                                        <td>@item.Amount</td>
+                                        <td>
+                                            @if (item.Type == 1)
+                                            {
+                                                <p class="text-success"> DEPOSIT </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-danger"> WITHDRAW </p>
+                                            }
+                                        </td>
+                                        <td>@item.Description</td>
+                                        <td>@item.DateTime.ToShamsi()</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

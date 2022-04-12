@@ -11,10 +11,12 @@ namespace TopLearn.Core.Services;
 public class UserService : IUserService
 {
     private readonly TopLearnDbContext _context;
+    private readonly IWalletService _waleService;
 
-    public UserService(TopLearnDbContext context)
+    public UserService(TopLearnDbContext context, IWalletService waleService)
     {
         _context = context;
+        _waleService = waleService;
     }
 
     public User Get(string email)
@@ -25,6 +27,11 @@ public class UserService : IUserService
     public User GetByActiveCode(string activeCode)
     {
         return _context.Users.SingleOrDefault(x => x.ActiveCode == activeCode);
+    }
+
+    public int GetUserId(string userName)
+    {
+        return _context.Users.Single(u => u.UserName == userName).Id;
     }
 
     public UserPanelSideBarViewModel GetUserPanelSideBarInfo(string userName)
@@ -121,7 +128,7 @@ public class UserService : IUserService
             UserName = user.UserName,
             Email = user.Email,
             RegisterDate = user.RegisterDate,
-            Wallet = 0
+            Wallet = _waleService.GetWalletBalance(user.Id)
         };
     }
 
