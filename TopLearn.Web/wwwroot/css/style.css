@@ -30,6 +30,10 @@ body {
 
 /* - - - - - Colors - - - - -  */
 
+.text-bold {
+    font-weight: bold !important;
+}
+
 
 .user-account aside > section,
 .user-account .avatar-layer {

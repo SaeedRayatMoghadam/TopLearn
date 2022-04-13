@@ -14,6 +14,7 @@ IConfiguration configuration = new ConfigurationBuilder()
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 
 #region Authentication
@@ -45,6 +46,7 @@ builder.Services.AddDbContext<TopLearnDbContext>(options =>
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWalletService, WalletService>();
+builder.Services.AddTransient<IAdminPanelService, AdminPanelService>();
 builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
 
 #endregion
@@ -56,9 +58,9 @@ app.UseStaticFiles();
 app.UseAuthentication();
 
 app.UseRouting();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();
 
 app.Run();
