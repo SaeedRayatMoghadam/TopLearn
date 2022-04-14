@@ -47,6 +47,7 @@ builder.Services.AddDbContext<TopLearnDbContext>(options =>
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWalletService, WalletService>();
 builder.Services.AddTransient<IAdminPanelService, AdminPanelService>();
+builder.Services.AddTransient<IPermissionService, PermissionService>();
 builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
 
 #endregion

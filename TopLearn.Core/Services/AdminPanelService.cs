@@ -1,5 +1,6 @@
 ﻿using TopLearn.Core.DTOs.AdminPanel;
 using TopLearn.Core.Interfaces;
+using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.AdminPanel;
 using TopLearn.Data.Context;
 using TopLearn.Data.Models.Users;
@@ -43,5 +44,24 @@ public class AdminPanelService : IAdminPanelService
             CurrentPage = pageId,
             PageCount = result.Count() / take
         };
+    }
+
+    public int AddUser(CreateUserViewModel user)
+    {
+        var newUser = new User()
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+            Password = user.Password.EncodeToMd5(),
+            RegisterDate = DateTime.Now,
+            ActiveCode = Generator.GenerateGuid(),
+            IsActive = true,
+            Avatar = "Default.jpg",
+        };
+        
+        _context.Users.Add(newUser);
+        _context.SaveChanges();
+
+        return newUser.Id;
     }
 }
