@@ -5,7 +5,9 @@ namespace TopLearn.Core.Interfaces;
 public interface IAdminPanelService
 {
     UsersListViewModel GetUsers(int pageId = 1, string emailFilter = "", string userNameFilter = "");
+    UsersListViewModel GetDeletedUsers(int pageId = 1, string emailFilter = "", string userNameFilter = "");
     int AddUser(CreateUserViewModel user);
     EditUserViewModel GetUserForEdit(int userId);
     void EditUser(EditUserViewModel editedUser);
+    void DeleteUser(int userId);
 }

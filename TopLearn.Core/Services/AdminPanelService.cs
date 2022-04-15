@@ -49,6 +49,36 @@ public class AdminPanelService : IAdminPanelService
         };
     }
 
+    public UsersListViewModel GetDeletedUsers(int pageId = 1, string emailFilter = "", string userNameFilter = "")
+    {
+        IQueryable<User> result = _context.Users.IgnoreQueryFilters().Where(u => u.IsDeleted);
+
+        if (!string.IsNullOrEmpty(emailFilter))
+            result = result.Where(u => u.Email.Contains(emailFilter));
+
+        if (!string.IsNullOrEmpty(userNameFilter))
+            result = result.Where(u => u.UserName.Contains(userNameFilter));
+
+        int take = 1;
+        int skip = (pageId - 1) * take;
+
+        return new UsersListViewModel()
+        {
+            Users = result.OrderBy(u => u.RegisterDate).Skip(skip).Take(take)
+                .Select(u => new UsersDto()
+                {
+                    Id = u.Id,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    RegisterDate = u.RegisterDate,
+                    IsActive = u.IsActive
+                })
+                .ToList(),
+            CurrentPage = pageId,
+            PageCount = result.Count() / take
+        };
+    }
+
     public int AddUser(CreateUserViewModel user)
     {
         var newUser = new User()
@@ -91,6 +121,16 @@ public class AdminPanelService : IAdminPanelService
 
         if (!string.IsNullOrEmpty(editedUser.Password))
             user.Password = editedUser.Password.EncodeToMd5();  
+
+        _context.Users.Update(user);
+        _context.SaveChanges();
+    }
+
+    public void DeleteUser(int userId)
+    {
+        var user = _context.Users.Single(u => u.Id == userId);
+
+        user.IsDeleted = true;
 
         _context.Users.Update(user);
         _context.SaveChanges();

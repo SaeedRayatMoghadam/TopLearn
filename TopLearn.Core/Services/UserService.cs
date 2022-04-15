@@ -24,14 +24,32 @@ public class UserService : IUserService
         return _context.Users.SingleOrDefault(x => x.Email == email);
     }
 
+    public User Get(int userId)
+    {
+        return _context.Users.SingleOrDefault(u => u.Id == userId);
+    }
+
     public User GetByActiveCode(string activeCode)
     {
-        return _context.Users.SingleOrDefault(x => x.ActiveCode == activeCode);
+        return _context.Users.SingleOrDefault(u => u.ActiveCode == activeCode);
     }
 
     public int GetUserId(string userName)
     {
         return _context.Users.Single(u => u.UserName == userName).Id;
+    }
+
+    public UserInfoViewModel GetUserInfo(int userId)
+    {
+        var user = Get(userId);
+
+        return new UserInfoViewModel()
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+            RegisterDate = user.RegisterDate,
+            Wallet = _waleService.GetWalletBalance(user.Id)
+        };
     }
 
     public UserPanelSideBarViewModel GetUserPanelSideBarInfo(string userName)

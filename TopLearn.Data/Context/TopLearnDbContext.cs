@@ -26,4 +26,11 @@ public class TopLearnDbContext : DbContext
     public DbSet<WalletType> WalletTypes { get; set; }
 
     #endregion
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
+
+        base.OnModelCreating(modelBuilder);
+    }
 }

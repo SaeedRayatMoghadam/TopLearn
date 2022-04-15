@@ -27,6 +27,8 @@ public class User : BaseEntity
     public bool IsActive { get; set; }
     public string Avatar { get; set; }
 
+    public bool IsDeleted { get; set; }
+
 
     #region Relations
 

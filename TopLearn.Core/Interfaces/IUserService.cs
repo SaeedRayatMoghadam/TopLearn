@@ -7,12 +7,14 @@ namespace TopLearn.Core.Interfaces;
 public interface IUserService
 {
     User Get(string email);
+    User Get(int userId);
     User GetByActiveCode(string activeCode);
     int GetUserId(string userName);
     
     //UserPanel Methods
     User GetByUserName(string userName);
     UserInfoViewModel GetUserInfo(string userName);
+    UserInfoViewModel GetUserInfo(int userId);
     UserPanelSideBarViewModel GetUserPanelSideBarInfo(string userName);
     EditUserProfileViewModel GetUserForEdit(string userName);
     void EditProfile(string userName, EditUserProfileViewModel profile);

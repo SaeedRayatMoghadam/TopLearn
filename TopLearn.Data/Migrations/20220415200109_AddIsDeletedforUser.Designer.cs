@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TopLearn.Data.Context;
 
@@ -11,9 +12,10 @@ using TopLearn.Data.Context;
 namespace TopLearn.Data.Migrations
 {
     [DbContext(typeof(TopLearnDbContext))]
-    partial class TopLearnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220415200109_AddIsDeletedforUser")]
+    partial class AddIsDeletedforUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
