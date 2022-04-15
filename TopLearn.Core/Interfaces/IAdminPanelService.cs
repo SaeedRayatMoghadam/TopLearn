@@ -6,4 +6,6 @@ public interface IAdminPanelService
 {
     UsersListViewModel GetUsers(int pageId = 1, string emailFilter = "", string userNameFilter = "");
     int AddUser(CreateUserViewModel user);
+    EditUserViewModel GetUserForEdit(int userId);
+    void EditUser(EditUserViewModel editedUser);
 }

@@ -1,15 +1,15 @@
-﻿@page
+﻿@page "{id}"
+@using TopLearn.Core.ViewModels.AdminPanel
 @using TopLearn.Data.Models.Users
-@model TopLearn.Web.Pages.Admin.Users.CreateUserModel
+@model TopLearn.Web.Pages.Admin.Users.EditModel
 @{
-    Layout = "Shared/_AdminLayout";
     ViewData["Title"] = "Create User";
     List<Role> roles = ViewData["Roles"] as List<Role>;
 }
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Create User</h1>
+        <h1 class="page-header">Edit User</h1>
     </div>
     
 </div>
@@ -23,31 +23,38 @@
                 </div>
                 
                 <div class="panel-body">
+                    <input type="hidden" asp-for="EditUserViewModel.Id"/>
+                    <input type="hidden" asp-for="EditUserViewModel.UserName"/>
                     <div class="form-group">
-                        <label>UserName</label>
-                        <input type="text" asp-for="CreateUserViewModel.UserName" class="form-control">
+                        <label>UserName : </label>
+                        <span class="text-muted">@Model.EditUserViewModel.UserName</span>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" asp-for="CreateUserViewModel.Email" class="form-control">
+                        <input type="email" asp-for="EditUserViewModel.Email" class="form-control">
                     </div>
+                    <span asp-validation-for="EditUserViewModel.Email" class="text-danger"></span>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="text" asp-for="CreateUserViewModel.Password" class="form-control">
+                        <input type="text" asp-for="EditUserViewModel.Password" class="form-control">
                     </div>
+                    <span asp-validation-for="EditUserViewModel.Password" class="text-danger"></span>
                     <div class="form-group">
                         <label>Roles</label>
                         @foreach (var item in roles)
                         {
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="SelectedRoles" value="@item.Id">@item.Title
+                                    <input
+                                        type="checkbox" name="SelectedRoles" value="@item.Id"
+                                        @((Model.EditUserViewModel.Roles.Any(r => r == item.Id) ? "checked" : ""))>
+                                    @item.Title
                                 </label>
                             </div>
                         }
 
                     </div>
-                    <input type="submit" value="Save" class="btn btn-info"/>
+                    <input type="submit" value="Edit" class="btn btn-warning"/>
                 </div>
                 
             </div>

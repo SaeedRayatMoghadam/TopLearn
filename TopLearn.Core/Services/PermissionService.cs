@@ -18,6 +18,11 @@ public class PermissionService : IPermissionService
         return _context.Roles.ToList();
     }
 
+    public List<int> GetUserRoles(int userId)
+    {
+        return _context.UserRoles.Where(r => r.UserId == userId).Select(r => r.Id).ToList();
+    }
+
     public void AddRolesToUser(List<int> rolesId, int userId)
     {
         foreach (var roleID in rolesId)
@@ -29,5 +34,16 @@ public class PermissionService : IPermissionService
             });
             _context.SaveChanges();
         }
+    }
+
+    public void EditUserRoles(int userId, List<int> rolesId)
+    {
+        _context.UserRoles
+            .Where(r => r.UserId == userId).ToList()
+            .ForEach(r => _context.UserRoles.Remove(r));
+
+        AddRolesToUser(rolesId, userId);
+
+        _context.SaveChanges();
     }
 }

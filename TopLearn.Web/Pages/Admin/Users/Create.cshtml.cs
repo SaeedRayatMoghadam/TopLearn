@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TopLearn.Core.Interfaces;
@@ -5,13 +6,12 @@ using TopLearn.Core.ViewModels.AdminPanel;
 
 namespace TopLearn.Web.Pages.Admin.Users
 {
-    [BindProperties]
-    public class CreateUserModel : PageModel
+    public class CreateModel : PageModel
     {
         private readonly IPermissionService _permissionService;
         private readonly IAdminPanelService _adminPanelService;
 
-        public CreateUserModel(IPermissionService permissionService, IAdminPanelService adminPanelService)
+        public CreateModel(IPermissionService permissionService, IAdminPanelService adminPanelService)
         {
             _permissionService = permissionService;
             _adminPanelService = adminPanelService;
@@ -38,3 +38,5 @@ namespace TopLearn.Web.Pages.Admin.Users
         }
     }
 }
+
+

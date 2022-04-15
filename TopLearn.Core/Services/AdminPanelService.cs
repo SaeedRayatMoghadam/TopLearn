@@ -1,4 +1,5 @@
-﻿using TopLearn.Core.DTOs.AdminPanel;
+﻿using Microsoft.EntityFrameworkCore;
+using TopLearn.Core.DTOs.AdminPanel;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.AdminPanel;
@@ -10,10 +11,12 @@ namespace TopLearn.Core.Services;
 public class AdminPanelService : IAdminPanelService
 {
     private readonly TopLearnDbContext _context;
+    private readonly IUserService _userService;
 
-    public AdminPanelService(TopLearnDbContext context)
+    public AdminPanelService(TopLearnDbContext context, IUserService userService)
     {
         _context = context;
+        _userService = userService;
     }
 
     public UsersListViewModel GetUsers(int pageId = 1, string emailFilter = "", string userNameFilter = "")
@@ -63,5 +66,33 @@ public class AdminPanelService : IAdminPanelService
         _context.SaveChanges();
 
         return newUser.Id;
+    }
+
+    public EditUserViewModel GetUserForEdit(int userId)
+    {
+        return _context.Users
+            .Include(u => u.UserRoles)
+            .Where(u => u.Id == userId)
+            .Select(u => new EditUserViewModel()
+            {
+                Id = u.Id,
+                UserName = u.UserName,
+                Email = u.Email,
+                Roles = u.UserRoles.Select(r => r.RoleId).ToList()
+            }).Single();
+    }
+
+    public void EditUser(EditUserViewModel editedUser)
+    {
+        var user = _userService.GetByUserName(editedUser.UserName);
+
+        if (!string.IsNullOrEmpty(editedUser.Email))
+            user.Email = editedUser.Email;
+
+        if (!string.IsNullOrEmpty(editedUser.Password))
+            user.Password = editedUser.Password.EncodeToMd5();  
+
+        _context.Users.Update(user);
+        _context.SaveChanges();
     }
 }
