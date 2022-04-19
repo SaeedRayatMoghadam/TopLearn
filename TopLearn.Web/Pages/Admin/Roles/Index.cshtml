@@ -1,0 +1,58 @@
+﻿@page
+@model TopLearn.Web.Pages.Admin.Roles.IndexModel
+@{
+    ViewData["Title"] = "Roles";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Roles List</h1>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                All Roles
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grId">
+                        <div style="margin: 10px 0;">
+                            <a href="/Admin/Roles/Create" class="btn btn-outline btn-success">New Role</a>
+                        </div>
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var role in Model.Roles)
+                                {
+                                    <tr>
+                                        <td>@role.Id</td>
+                                        <td>@role.Title</td>
+                                        <td>
+                                            <a href="/Admin/Roles/Edit/@role.Id" class="btn btn-sm btn-outline btn-warning"><i class="fa fa-pencil"></i></a>
+                                            <a href="/Admin/Roles/Delete/@role.Id" class="btn btn-sm btn-outline btn-danger"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

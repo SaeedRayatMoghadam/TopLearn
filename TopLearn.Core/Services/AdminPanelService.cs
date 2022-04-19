@@ -3,6 +3,7 @@ using TopLearn.Core.DTOs.AdminPanel;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Utils;
 using TopLearn.Core.ViewModels.AdminPanel;
+using TopLearn.Core.ViewModels.AdminPanel.Roles;
 using TopLearn.Data.Context;
 using TopLearn.Data.Models.Users;
 
@@ -134,5 +135,51 @@ public class AdminPanelService : IAdminPanelService
 
         _context.Users.Update(user);
         _context.SaveChanges();
+    }
+
+    public List<RoleViewModel> GetRoles()
+    {
+        return _context.Roles.Select(r => new RoleViewModel()
+        {
+            Id = r.Id,
+            Title = r.Title
+        }).ToList();
+    }
+
+    public void AddRole(RoleViewModel role)
+    {
+        _context.Roles.Add(new Role()
+        {
+            Title = role.Title
+        });
+
+        _context.SaveChanges();
+    }
+
+    public void UpdateRole(RoleViewModel role)
+    {
+        _context.Roles.Update(new Role()
+        {
+            Id = role.Id,
+            Title = role.Title
+        });
+        _context.SaveChanges(); 
+    }
+
+    public void DeleteRole(int id)
+    {
+        var role = _context.Roles.Single(r => r.Id == id);
+
+        _context.Roles.Remove(role);
+        _context.SaveChanges();
+    }
+
+    public RoleViewModel GetRole(int id)
+    {
+        return _context.Roles.Where(r => r.Id == id).Select(r => new RoleViewModel()
+        {
+            Id = r.Id,
+            Title = r.Title
+        }).Single();
     }
 }

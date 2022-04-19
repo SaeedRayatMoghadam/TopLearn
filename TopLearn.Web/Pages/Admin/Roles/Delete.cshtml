@@ -1,0 +1,18 @@
+﻿@page "{id}"
+@model TopLearn.Web.Pages.Admin.Roles.DeleteModel
+@{
+    ViewData["Title"] = "Delete Role";
+}
+
+<div class="container alert alert-danger">
+    <form method="post">
+        <input type="hidden" asp-for="Role.Id"/>
+        <input type="hidden" asp-for="Role.Title"/>
+        <h2>Are you sure to Delete "@Model.Role.Title" Role ?</h2>
+        <p>
+            <input type="submit" value="Delete" class="btn btn-outline btn-danger"/>
+            <a asp-page="Index" class="btn btn-outline btn-info">Cancel</a>
+        </p>
+    </form>
+</div>
+
