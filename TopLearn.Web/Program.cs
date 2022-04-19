@@ -50,6 +50,9 @@ builder.Services.AddTransient<IAdminPanelService, AdminPanelService>();
 builder.Services.AddTransient<IPermissionService, PermissionService>();
 builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
 
+
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+
 #endregion
 
 var app = builder.Build();

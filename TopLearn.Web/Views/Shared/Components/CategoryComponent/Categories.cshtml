@@ -1,0 +1,26 @@
+﻿@model List<TopLearn.Core.ViewModels.Categories.CategoryViewModel>
+
+<div class="main-menu">
+    <div class="container">
+        <nav>
+            <span class="responsive-sign"><i class="zmdi zmdi-menu"></i></span>
+            <ul>
+                @foreach (var cat in Model.Where(c => c.ParentId == null))
+                {
+                    <li>
+                        <a href=""> @cat.Title </a>
+                        @if (Model.Any(c => c.ParentId == cat.Id))
+                        {
+                            <ul>
+                                @foreach (var sub in Model.Where(c => c.ParentId == cat.Id))
+                                {
+                                    <li><a href=""> @sub.Title </a></li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -55,10 +55,10 @@
         </div>
     </div>
 
-    <partial name="_MainMenu" />
+@await Component.InvokeAsync("CategoryComponent")
 
 
-    @RenderBody()
+@RenderBody()
 
 
     <partial name="_Footer" />

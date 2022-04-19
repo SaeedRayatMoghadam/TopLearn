@@ -14,6 +14,7 @@
     <Folder Include="Utils\" />
     <Folder Include="ViewModels\Account\" />
     <Folder Include="ViewModels\AdminPanel\Roles\" />
+    <Folder Include="ViewModels\Categories\" />
   </ItemGroup>
 
   <ItemGroup>
