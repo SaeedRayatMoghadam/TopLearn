@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TopLearn.Data.Models.Categories;
+using TopLearn.Data.Models.Course;
 using TopLearn.Data.Models.Users;
 using TopLearn.Data.Models.Wallets;
 
@@ -27,8 +28,19 @@ public class TopLearnDbContext : DbContext
     //Categories
     public DbSet<Category> Categories { get; set; }
 
+    //Course
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<CourseEpisode> CourseEpisodes { get; set; }
+    public DbSet<CourseLevel> CourseLevels { get; set; }
+    public DbSet<CourseStatus> CourseStatuses { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        foreach (var relations in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
+        {
+            relations.DeleteBehavior = DeleteBehavior.Restrict;
+        }
+
         modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
         modelBuilder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);
 

@@ -13,10 +13,17 @@ public class Category
     public int? ParentId { get; set; }
     public bool IsDeleted { get; set; }
 
+    
     #region Relations
 
     [ForeignKey("ParentId")]
     public List<Category> Categories { get; set; }
+
+    [InverseProperty("Category")]
+    public List<Course.Course> Courses { get; set; }
+
+    [InverseProperty("SubCategory")]
+    public List<Course.Course> SubCategoriesCourses { get; set; }
 
     #endregion
 }

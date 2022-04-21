@@ -34,6 +34,7 @@ public class User : BaseEntity
 
     public virtual List<UserRole> UserRoles { get; set; }
     public virtual List<Wallet> Wallets { get; set; }
+    public List<Course.Course> Courses { get; set; }
 
     #endregion
 }

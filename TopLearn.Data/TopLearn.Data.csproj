@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Context\" />
     <Folder Include="Models\Categories\" />
+    <Folder Include="Models\Course\" />
     <Folder Include="Models\Users\" />
   </ItemGroup>
 
