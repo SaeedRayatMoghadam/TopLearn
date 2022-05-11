@@ -30,7 +30,7 @@ public class AdminPanelService : IAdminPanelService
         if (!string.IsNullOrEmpty(userNameFilter))
             result = result.Where(u => u.UserName.Contains(userNameFilter));
 
-        int take = 1;
+        int take = 3;
         int skip = (pageId - 1) * take;
 
         return new UsersListViewModel()
@@ -46,7 +46,7 @@ public class AdminPanelService : IAdminPanelService
                 })
                 .ToList(),
             CurrentPage = pageId,
-            PageCount = result.Count() / take
+            PageCount = (int)Math.Ceiling(decimal.Divide(result.Count(), take))
         };
     }
 

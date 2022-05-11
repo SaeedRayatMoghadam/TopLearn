@@ -1,15 +1,13 @@
 ﻿@page
 @using TopLearn.Core.Utils
-@using TopLearn.Core.ViewModels.AdminPanel
-@model TopLearn.Web.Pages.Admin.Users.IndexModel
+@model TopLearn.Web.Pages.Admin.Courses.IndexModel
 @{
-    Layout = "Shared/_AdminLayout";
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "Courses";
 }
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Users List</h1>
+        <h1 class="page-header">Courses List</h1>
     </div>
 
 </div>
@@ -18,7 +16,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                All Users
+                All Courses
             </div>
 
             <div class="panel-body">
@@ -40,49 +38,49 @@
                         </div>
                         <div style="margin: 10px 0;">
                             <hr />
-                            <a href="/Admin/Users/Create" class="btn btn-outline btn-success">New User</a>
+                            <a href="/Admin/Courses/Create" class="btn btn-outline btn-success">New Course</a>
                         </div>
                         <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                             <thead>
                                 <tr>
-                                    <th>UserName</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Register Date</th>
-                                    <th>Options</th>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>Episodes</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var user in Model.UsersListViewModel.Users)
+                                @foreach (var course in Model.CourseViewModels)
                                 {
                                     <tr>
-                                        <td>@user.UserName</td>
-                                        <td>@user.Email</td>
-                                        <td class="text-bold @((user.IsActive) ? "text-success" : "text-danger")">
-                                            @((user.IsActive) ? "ACTIVE" : "DeACTIVE")
+                                        <td>@course.Id</td>
+                                        <td><img src="/course/thumbs/@course.Image" class="img-thumbnail" /></td>
+                                        <td>@course.Title</td>
+                                        <td class="text-center mx-auto text-bold @((course.Price == 0) ? "badge bg-primary" : "badge bg-warning")">
+                                            @((course.Price == 0) ? "FREE" : course.Price)
                                         </td>
-                                        <td>@user.RegisterDate.ToShamsi()</td>
                                         <td>
-                                            <a href="/Admin/Users/Edit/@user.Id" class="btn btn-sm btn-outline btn-warning"><i class="fa fa-pencil"></i></a>
-                                            <a href="/Admin/Users/Delete/@user.Id" class="btn btn-sm btn-outline btn-danger"><i class="fa fa-trash-o"></i></a>
+                                            <a href="/Admin/Courses/Edit/@course.Id" class="btn btn-sm btn-outline btn-warning"><i class="fa fa-pencil"></i></a>
+                                            <a href="/Admin/Courses/Delete/@course.Id" class="btn btn-sm btn-outline btn-danger"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table><div class="row">
-                            <div class="col-sm-6">
+                            @*<div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                                     <ul class="pagination">
                                         @for (int i = 1; i <= Model.UsersListViewModel.PageCount; i++)
                                         {
-                                            <li class="paginate_button @((i==Model.UsersListViewModel.CurrentPage)?"active":"")"
-                                            aria-controls="dataTables-example" tabindex="0">
+                                            <li class="paginate_button @((i==Model.UsersListViewModel.CurrentPage)?"active":"")" 
+                                                aria-controls="dataTables-example" tabindex="0">
                                                 <a href="/Admin/Users?PageId=@i">@i</a>
                                             </li>
                                         }
                                     </ul>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

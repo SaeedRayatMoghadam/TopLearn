@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="ViewComponents\" />
+    <Folder Include="wwwroot\course\demos\" />
+    <Folder Include="wwwroot\course\thumbs\" />
   </ItemGroup>
 
 </Project>

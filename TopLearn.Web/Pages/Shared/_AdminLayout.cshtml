@@ -9,18 +9,19 @@
 
     <title>TopLearn Admin | @ViewData["Title"]</title>
 
-    
+
     <link href="/AdminLayout/css/bootstrap-rtl.css" rel="stylesheet">
     <link href="/AdminLayout/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    
+
     <link href="/AdminLayout/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <link href="/AdminLayout/css/plugins/timeline/timeline.css" rel="stylesheet">
 
-    
+
     <link href="/AdminLayout/css/sb-admin.css" rel="stylesheet">
-    
-    
+    <link href="/AdminLayout/css/style.css" rel="stylesheet">
+
+
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/favicon.ico">
 
@@ -40,7 +41,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
             </div>
-            
+
 
             <ul class="nav navbar-top-links navbar-left">
                 <li class="dropdown">
@@ -91,9 +92,9 @@
                             </a>
                         </li>
                     </ul>
-                    
+
                 </li>
-                
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -170,9 +171,9 @@
                             </a>
                         </li>
                     </ul>
-                    
+
                 </li>
-                
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -230,27 +231,30 @@
                             </a>
                         </li>
                     </ul>
-                    
+
                 </li>
-                
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li>
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    
+
                 </li>
-                
+
             </ul>
-            
+
 
             <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
@@ -259,12 +263,12 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
-                            
+
                         </li>
                         <li>
                             <a href="/Admin"><i class="fa fa-dashboard fa-fw"></i> DashBoard </a>
@@ -283,10 +287,13 @@
                                     <a href="/Admin/Users/DeletedUsers">Deleted Users</a>
                                 </li>
                             </ul>
-                            
+
                         </li>
                         <li>
                             <a href="/Admin/Roles"><i class="fa fa-clipboard fa-fw"></i> Roles </a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Courses"><i class="fa fa-book fa-fw"></i> Course`s </a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
@@ -310,7 +317,7 @@
                                     <a href="grid.html">GrId</a>
                                 </li>
                             </ul>
-                            
+
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
@@ -337,10 +344,10 @@
                                             <a href="#">Third Level Item</a>
                                         </li>
                                     </ul>
-                                    
+
                                 </li>
                             </ul>
-                            
+
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
@@ -352,39 +359,41 @@
                                     <a href="login.html">Login Page</a>
                                 </li>
                             </ul>
-                            
+
                         </li>
                     </ul>
-                    
+
                 </div>
-                
+
             </div>
-            
+
         </nav>
 
         <div id="page-wrapper">
             @RenderBody()
-            
+
         </div>
-        
+
 
     </div>
-    
 
-    
+
+
     <script src="/AdminLayout/js/jquery-1.10.2.js"></script>
     <script src="/AdminLayout/js/bootstrap.min.js"></script>
     <script src="/AdminLayout/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-    
+
     <script src="/AdminLayout/js/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="/AdminLayout/js/plugins/morris/morris.js"></script>
 
-    
+
     <script src="/AdminLayout/js/sb-admin.js"></script>
 
-    
+
     <script src="/AdminLayout/js/demo/dashboard-demo.js"></script>
+
+    @RenderSection("Scripts",false)
 
 </body>
 

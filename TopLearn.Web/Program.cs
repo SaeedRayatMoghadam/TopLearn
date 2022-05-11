@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Services;
@@ -16,6 +17,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+
+//MaxFileLength Config
+//builder.Services.Configure<FormOptions>(options =>
+//{
+//    options.MultipartBodyLengthLimit = 52428800;
+//});
 
 #region Authentication
 
@@ -47,6 +54,8 @@ builder.Services.AddDbContext<TopLearnDbContext>(options =>
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWalletService, WalletService>();
 builder.Services.AddTransient<IAdminPanelService, AdminPanelService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ICourseService, CourseService>();
 builder.Services.AddTransient<IPermissionService, PermissionService>();
 builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
 

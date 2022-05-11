@@ -1,0 +1,111 @@
+﻿@page
+@model TopLearn.Web.Pages.Admin.Courses.CreateModel
+
+@{
+    ViewData["Title"] = "New Course";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
+            <h2>Course Information</h2>
+            <hr />
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" asp-for="Course.Title" class="form-control">
+                <span asp-validation-for="Course.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" asp-for="Course.CategoryId" asp-items="@(ViewData["Categories"] as SelectList)"></select>
+                <span asp-validation-for="Course.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Sub Categories</label>
+                <select class="form-control" asp-for="Course.SubCategoryId" asp-items="@(ViewData["SubCategories"] as SelectList)"></select>
+                <span asp-validation-for="Course.SubCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Teachers</label>
+                <select class="form-control" asp-for="Course.TeacherId" asp-items="@(ViewData["Teachers"] as SelectList)"></select>
+                <span asp-validation-for="Course.TeacherId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" asp-for="Course.Description" rows="10"></textarea>
+                <span asp-validation-for="Course.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" asp-for="Course.Price" value="0" class="form-control" />
+                <span asp-validation-for="Course.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Demo Video</label>
+                <input type="file" name="demoUp">
+            </div>
+            <div class="form-group">
+                <label>Tags</label>
+                <input type="text" asp-for="Course.Tags" class="form-control">
+                <p class="help-block"> - Split the Tags with </p>
+                <span asp-validation-for="Course.Tags" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+        <div class="col-md-4">
+            <p></p>
+            <img id="imgCourse" class="thumbnail" src="/images/avatar.jpg"/>
+            <div class="form-group">
+                <label>Choose Image</label>
+                <input type="file" name="imgCourseUp" id="imgCourseUp">
+            </div>
+            <div class="form-group">
+                <label>Level</label>
+                <select class="form-control" asp-for="Course.LevelId" asp-items="@(ViewData["Levels"] as SelectList)"></select>
+                <span asp-validation-for="Course.LevelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <select class="form-control" asp-for="Course.StatusId" asp-items="@(ViewData["Statuses"] as SelectList)"></select>
+                <span asp-validation-for="Course.StatusId" class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script>
+        $("#Course_CategoryId").change(function() {
+            $("#Course_SubCategoryId").empty();
+            $.getJSON("/Category/GetSubCategories/" + $("#Course_CategoryId :selected").val(),
+                function(data) {
+                    $.each(data,
+                        function() {
+                            $("#Course_SubCategoryId").append('<option value=' + this.value + '>' + this.text + '</option>');
+                            
+                        });
+
+                });
+
+
+        });
+
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgCourse').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgCourseUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}

@@ -15,9 +15,11 @@
     <Folder Include="ViewModels\Account\" />
     <Folder Include="ViewModels\AdminPanel\Roles\" />
     <Folder Include="ViewModels\Categories\" />
+    <Folder Include="ViewModels\Courses\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
