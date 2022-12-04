@@ -1,0 +1,12 @@
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\bin\Debug\net6.0\TopLearn.Core.deps.json
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\bin\Debug\net6.0\TopLearn.Core.dll
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\bin\Debug\net6.0\TopLearn.Core.pdb
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.csproj.AssemblyReference.cache
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.AssemblyInfoInputs.cache
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.AssemblyInfo.cs
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.csproj.CoreCompileInputs.cache
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.dll
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\refint\TopLearn.Core.dll
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.pdb
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\ref\TopLearn.Core.dll

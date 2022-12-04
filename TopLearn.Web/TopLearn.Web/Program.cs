@@ -1,7 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using TopLearn.Data.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+//DataBase
+builder.Services.AddDbContext<TopLearnContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("TopLearnConnection"));
+});
+
 
 var app = builder.Build();
 
