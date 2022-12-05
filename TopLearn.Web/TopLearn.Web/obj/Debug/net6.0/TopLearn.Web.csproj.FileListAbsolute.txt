@@ -78,3 +78,5 @@ D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web\bin\Debug\net6.0\Syst
 D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web\bin\Debug\net6.0\System.Text.Json.dll
 D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web\obj\Debug\net6.0\TopLearn.Web.RazorAssemblyInfo.cache
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web\obj\Debug\net6.0\TopLearn.Web.RazorAssemblyInfo.cs
