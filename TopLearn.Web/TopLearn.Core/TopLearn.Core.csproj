@@ -9,8 +9,13 @@
   <ItemGroup>
     <Folder Include="Convertors\" />
     <Folder Include="DTOs\" />
+    <Folder Include="Utilities\" />
     <Folder Include="Security\" />
-    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TopLearn.Data\TopLearn.Data.csproj" />
   </ItemGroup>
 
 </Project>

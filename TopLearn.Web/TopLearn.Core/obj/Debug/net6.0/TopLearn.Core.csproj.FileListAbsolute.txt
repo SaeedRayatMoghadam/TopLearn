@@ -10,3 +10,6 @@ D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\Top
 D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\refint\TopLearn.Core.dll
 D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.pdb
 D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\ref\TopLearn.Core.dll
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\bin\Debug\net6.0\TopLearn.Data.dll
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\bin\Debug\net6.0\TopLearn.Data.pdb
+D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Core\obj\Debug\net6.0\TopLearn.Core.csproj.CopyComplete

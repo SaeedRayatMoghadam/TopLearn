@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TopLearn.Core.Interfaces;
+using TopLearn.Core.Services;
 using TopLearn.Data.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,10 @@ builder.Services.AddDbContext<TopLearnContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("TopLearnConnection"));
 });
+
+
+//IOC
+builder.Services.AddTransient<IAccountService, AccountService>();
 
 
 var app = builder.Build();

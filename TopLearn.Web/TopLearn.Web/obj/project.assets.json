@@ -1144,6 +1144,19 @@
           }
         }
       },
+      "TopLearn.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "TopLearn.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TopLearn.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TopLearn.Core.dll": {}
+        }
+      },
       "TopLearn.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3478,6 +3491,11 @@
         "version.txt"
       ]
     },
+    "TopLearn.Core/1.0.0": {
+      "type": "project",
+      "path": "../TopLearn.Core/TopLearn.Core.csproj",
+      "msbuildProject": "../TopLearn.Core/TopLearn.Core.csproj"
+    },
     "TopLearn.Data/1.0.0": {
       "type": "project",
       "path": "../TopLearn.Data/TopLearn.Data.csproj",
@@ -3487,6 +3505,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0",
+      "TopLearn.Core >= 1.0.0",
       "TopLearn.Data >= 1.0.0"
     ]
   },
@@ -3517,6 +3536,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Core\\TopLearn.Core.csproj": {
+              "projectPath": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Core\\TopLearn.Core.csproj"
+            },
             "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Data\\TopLearn.Data.csproj": {
               "projectPath": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Data\\TopLearn.Data.csproj"
             }

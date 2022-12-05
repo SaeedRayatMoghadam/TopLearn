@@ -15,6 +15,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Projects\Web\Backend\TopLearn\TopLearn.Web\TopLearn.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Projects/Web/Backend/TopLearn/TopLearn.Web/TopLearn.Web/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/Web/Backend/TopLearn/TopLearn.Web/TopLearn.Web/Views/Account/RegisteredSuccessfuly.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlcmVkU3VjY2Vzc2Z1bHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/Web/Backend/TopLearn/TopLearn.Web/TopLearn.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

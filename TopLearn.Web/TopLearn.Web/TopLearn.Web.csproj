@@ -29,7 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TopLearn.Core\TopLearn.Core.csproj" />
     <ProjectReference Include="..\TopLearn.Data\TopLearn.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Account\" />
   </ItemGroup>
 
 </Project>
