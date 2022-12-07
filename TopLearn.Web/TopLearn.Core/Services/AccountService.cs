@@ -1,4 +1,7 @@
-﻿using TopLearn.Core.Interfaces;
+﻿using TopLearn.Core.DTOs.Account;
+using TopLearn.Core.Interfaces;
+using TopLearn.Core.Security;
+using TopLearn.Core.Utilities;
 using TopLearn.Data.Context;
 using TopLearn.Data.Entities.User;
 
@@ -29,5 +32,26 @@ public class AccountService : IAccountService
         _context.SaveChanges();
 
         return user.Id;
+    }
+
+    public User Login(LoginDto user)
+    {
+        var pass = PasswordHelper.EncodeToMd5(user.Password);
+        var email = EmailFixer.Fix(user.Email);
+        
+        return _context.Users.SingleOrDefault(u => u.Email == email && u.Password == pass);
+    }
+
+    public bool ActiveAccount(string activeCode)
+    {
+        var user = _context.Users.SingleOrDefault(u => u.ActiveCode == activeCode);
+        if (user == null || user.IsActive)
+            return false;
+
+        user.IsActive = true;
+        user.ActiveCode = CodeGenerator.Generate();
+        _context.SaveChanges();
+
+        return true;
     }
 }

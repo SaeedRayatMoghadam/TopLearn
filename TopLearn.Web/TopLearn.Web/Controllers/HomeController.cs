@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TopLearn.Web.Controllers
 {
@@ -8,5 +9,6 @@ namespace TopLearn.Web.Controllers
         {
             return View();
         }
+        
     }
 }

@@ -23,54 +23,63 @@
 <body>
     <script src="/js/modernizr-custom.js"></script>
 
-        <div class="landing-layer">
-            <div class="container">
-                <nav>
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                            <ul>
-                                <li>
-                                    <a href=""> همکاری در فروش </a>
-                                    <a href=""> درباره ما </a>
-                                    <a href=""> تماس با ما </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="clientarea">
-                                <div class="loggein hidden">
-                                    <i class="zmdi zmdi-account"></i><a href=""> ایمان مدائنی ، خوش آمدی </a>
+    <div class="landing-layer">
+        <div class="container">
+            <nav>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <ul>
+                            <li>
+                                <a href=""> همکاری در فروش </a>
+                                <a href=""> درباره ما </a>
+                                <a href=""> تماس با ما </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="clientarea">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="loggein">
+                                    <i class="zmdi zmdi-account"></i><a href=""> @User.Identity.Name خوش آمدی</a> /
+                                <a href="/Logout"> خروج </a>
                                 </div>
+                            }
+                            else
+                            {
                                 <div class="signin">
                                     <i class="zmdi zmdi-account"></i>
-                                    <a href=""> ورود </a> /
-                                    <a href=""> عضویت </a>
+                                    <a href="/Login"> ورود </a> /
+                                    <a href="/Register"> عضویت </a>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
-                </nav>
-                @RenderSection("HeaderSearch",false)
-            </div>
+                </div>
+            </nav>
+            @RenderSection("HeaderSearch",false)
         </div>
+    </div>
 
-        <!-- main manu -->
-        <partial name="_MainMenu" />
-        <!-- /main manu -->
-        <!-- content -->
-        @RenderBody()
-        <!-- /content -->
-        <!-- footer -->
-        <partial name="_Footer" />
-        <!-- /footer -->
+    <!-- main manu -->
+    <partial name="_MainMenu" />
+    <!-- /main manu -->
+    <!-- content -->
+    @RenderBody()
+    <!-- /content -->
+    <!-- footer -->
+    <partial name="_Footer" />
+    <!-- /footer -->
 
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/script.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.min.js"></script>
 
 
 
 
 
-        
+
 </body>
 </html>

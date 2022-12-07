@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Convertors\" />
-    <Folder Include="DTOs\" />
+    <Folder Include="DTOs\Account\" />
     <Folder Include="Utilities\" />
     <Folder Include="Security\" />
     <Folder Include="Interfaces\" />

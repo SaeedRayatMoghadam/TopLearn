@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Services;
@@ -20,6 +21,19 @@ builder.Services.AddDbContext<TopLearnContext>(option =>
 builder.Services.AddTransient<IAccountService, AccountService>();
 
 
+//Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(option =>
+{
+    option.LoginPath = "/Login";
+    option.LogoutPath = "/Logout";
+    option.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,9 +43,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
-
 app.UseAuthorization();
 
 
