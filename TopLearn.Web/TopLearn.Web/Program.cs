@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using TopLearn.Core.Interfaces;
+using TopLearn.Core.Security;
 using TopLearn.Core.Services;
 using TopLearn.Data.Context;
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<TopLearnContext>(option =>
 
 //IOC
 builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 //Authentication
@@ -51,6 +53,14 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 
 app.Run();

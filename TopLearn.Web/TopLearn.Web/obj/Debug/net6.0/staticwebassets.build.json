@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+oBnRzMzAn8SIUnG8VNaojCDA7wL04JObiLIAPp0QYQ=",
+  "Hash": "8UZpFTZUDjgckkic1oNa+nFmqm9GDCg7ExNyoZaiacI=",
   "Source": "TopLearn.Web",
   "BasePath": "_content/TopLearn.Web",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-rtl.min.css"
+    },
+    {
+      "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\css\\CustomCss.css",
+      "SourceId": "TopLearn.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\",
+      "BasePath": "_content/TopLearn.Web",
+      "RelativePath": "css/CustomCss.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CustomCss.css"
     },
     {
       "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\css\\fonts\\BYekan-webfont.eot",
