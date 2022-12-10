@@ -1,5 +1,6 @@
 ﻿using TopLearn.Core.DTOs.UserPanel;
 using TopLearn.Core.Interfaces;
+using TopLearn.Core.Security;
 using TopLearn.Core.Utilities;
 using TopLearn.Data.Context;
 using TopLearn.Data.Entities.User;
@@ -102,5 +103,19 @@ public class UserService : IUserService
     public bool IsEmailExist(string email)
     {
         return _context.Users.Any(u => u.Email == email);
+    }
+
+    public void ChangePassword(string username, string password)
+    {
+        var user = GetUser(username);
+        user.Password = PasswordHelper.EncodeToMd5(password);
+
+        UpdateUser(user);
+    }
+
+    public bool ComparePassword(string username, string password)
+    {
+        return _context.Users.Any(u => u.UserName == username &&
+                                       u.Password == PasswordHelper.EncodeToMd5(password));
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+qIesTHno35IqPvsxEr+N021AlQ2KauqyJV2FVf4nyA=",
+  "Hash": "NxIF1/KKW46lSAt4Y9vSPE+d5BGc8y6v+o5TPmQd4f8=",
   "Source": "TopLearn.Web",
   "BasePath": "_content/TopLearn.Web",
   "Mode": "Default",
@@ -527,12 +527,12 @@
       "OriginalItemSpec": "wwwroot\\images\\slide.jpg"
     },
     {
-      "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\UserAvatars\\403434fddf2149e1a39e7364355ba01d.jpg",
+      "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\UserAvatars\\506c294334094dc6b4e6e2db21ef5a43.jpg",
       "SourceId": "TopLearn.Web",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\",
       "BasePath": "_content/TopLearn.Web",
-      "RelativePath": "images/UserAvatars/403434fddf2149e1a39e7364355ba01d.jpg",
+      "RelativePath": "images/UserAvatars/506c294334094dc6b4e6e2db21ef5a43.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -541,7 +541,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\UserAvatars\\403434fddf2149e1a39e7364355ba01d.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\UserAvatars\\506c294334094dc6b4e6e2db21ef5a43.jpg"
     },
     {
       "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\UserAvatars\\Default.jpg",

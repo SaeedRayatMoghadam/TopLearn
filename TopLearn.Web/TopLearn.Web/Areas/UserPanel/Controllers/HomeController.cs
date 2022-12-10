@@ -37,5 +37,30 @@ namespace TopLearn.Web.Areas.UserPanel.Controllers
             _userService.EditProfile(User.Identity.Name, model);
             return Redirect("/Logout");
         }
+
+
+        [Route("UserPanel/ChangePassword")]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        
+        [HttpPost("UserPanel/ChangePassword")]
+        public IActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if(!ModelState.IsValid)
+                return View();
+
+            if (_userService.ComparePassword(User.Identity.Name, model.CurrentPassword))
+            {
+                _userService.ChangePassword(User.Identity.Name,model.Password);
+                return Redirect("/Logout");
+            }
+            else
+            {
+                ModelState.AddModelError("ConfirmPassword","اطلاعات وارد شده همخوانی ندارند");
+                return View(model);
+            }
+        }
     }
 }
