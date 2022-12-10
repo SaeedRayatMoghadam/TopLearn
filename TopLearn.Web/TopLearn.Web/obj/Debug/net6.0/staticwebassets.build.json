@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8UZpFTZUDjgckkic1oNa+nFmqm9GDCg7ExNyoZaiacI=",
+  "Hash": "+qIesTHno35IqPvsxEr+N021AlQ2KauqyJV2FVf4nyA=",
   "Source": "TopLearn.Web",
   "BasePath": "_content/TopLearn.Web",
   "Mode": "Default",
@@ -272,23 +272,6 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\Defult.jpg",
-      "SourceId": "TopLearn.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\",
-      "BasePath": "_content/TopLearn.Web",
-      "RelativePath": "images/Defult.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\Defult.jpg"
-    },
-    {
       "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\logo.png",
       "SourceId": "TopLearn.Web",
       "SourceType": "Discovered",
@@ -542,6 +525,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\slide.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\UserAvatars\\403434fddf2149e1a39e7364355ba01d.jpg",
+      "SourceId": "TopLearn.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\",
+      "BasePath": "_content/TopLearn.Web",
+      "RelativePath": "images/UserAvatars/403434fddf2149e1a39e7364355ba01d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\UserAvatars\\403434fddf2149e1a39e7364355ba01d.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\images\\UserAvatars\\Default.jpg",
+      "SourceId": "TopLearn.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\",
+      "BasePath": "_content/TopLearn.Web",
+      "RelativePath": "images/UserAvatars/Default.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\UserAvatars\\Default.jpg"
     },
     {
       "Identity": "D:\\Projects\\Web\\Backend\\TopLearn\\TopLearn.Web\\TopLearn.Web\\wwwroot\\js\\bootstrap.min.js",

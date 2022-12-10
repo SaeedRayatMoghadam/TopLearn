@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using TopLearn.Core.Interfaces;
-using TopLearn.Core.Security;
 using TopLearn.Core.Services;
 using TopLearn.Data.Context;
 
