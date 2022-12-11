@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TopLearn.Data.Entities.User;
+using TopLearn.Data.Entities.Wallet;
 
 namespace TopLearn.Data.Context;
 
@@ -17,4 +18,7 @@ public class TopLearnContext:DbContext
     public DbSet<UserRole> UserRoles { get; set; }
 
     #endregion
+
+    public DbSet<Transaction> Transactions { get; set; }
+    public DbSet<TransactionTypes> TransactionTypes { get; set; }
 }

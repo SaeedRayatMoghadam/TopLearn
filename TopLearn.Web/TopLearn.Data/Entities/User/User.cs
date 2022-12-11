@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+using TopLearn.Data.Entities.Wallet;
 
 namespace TopLearn.Data.Entities.User;
 
@@ -43,6 +45,7 @@ public class User
     #region Relations
 
     public virtual List<UserRole> UserRoles { get; set; }
+    public virtual List<Transaction> Transactions { get; set; }
 
     #endregion
 }
