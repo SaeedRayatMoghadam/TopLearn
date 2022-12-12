@@ -19,6 +19,7 @@ builder.Services.AddDbContext<TopLearnContext>(option =>
 
 //IOC
 builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddScoped<IWalletService, WalletService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 

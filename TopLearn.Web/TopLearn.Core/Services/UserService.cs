@@ -10,13 +10,15 @@ namespace TopLearn.Core.Services;
 public class UserService : IUserService
 {
     private readonly TopLearnContext _context;
+    private readonly IWalletService _walletService;
 
-    public UserService(TopLearnContext context)
+
+    public UserService(TopLearnContext context, IWalletService walletService)
     {
         _context = context;
+        _walletService = walletService;
     }
 
-    
 
     public void EditProfile(string username, EditProfileViewModel model)
     {
@@ -79,7 +81,7 @@ public class UserService : IUserService
             UserName = user.UserName,
             Email = user.Email,
             RegisterDate = user.RegisterDate,
-            Wallet = 0
+            Wallet = _walletService.GetUserWalletBalance(username)
         };
 
         return userInfo;
@@ -117,5 +119,10 @@ public class UserService : IUserService
     {
         return _context.Users.Any(u => u.UserName == username &&
                                        u.Password == PasswordHelper.EncodeToMd5(password));
+    }
+
+    public int GetUserId(string username)
+    {
+        return _context.Users.Single(u => u.UserName == username).Id;
     }
 }

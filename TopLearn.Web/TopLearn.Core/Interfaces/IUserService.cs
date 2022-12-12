@@ -6,6 +6,7 @@ namespace TopLearn.Core.Interfaces;
 public interface IUserService
 {
     User GetUser(string username);
+    int GetUserId(string username);
     EditProfileViewModel GetUserForEditProfile(string username);
     UserInfoDto GetUserInfo(string username);
     UserPanelSideBarDto GetUserPanelSideBarInfo(string username);
