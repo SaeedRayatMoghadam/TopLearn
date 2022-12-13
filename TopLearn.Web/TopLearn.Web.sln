@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopLearn.Web", "TopLearn.Web\TopLearn.Web.csproj", "{5EC2F13B-6CC8-4E22-868B-54162D7348F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopLearn.Data", "TopLearn.Data\TopLearn.Data.csproj", "{680EF6EC-0F8E-451E-81AB-61225755AFA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopLearn.Data", "TopLearn.Data\TopLearn.Data.csproj", "{680EF6EC-0F8E-451E-81AB-61225755AFA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopLearn.Core", "TopLearn.Core\TopLearn.Core.csproj", "{B512B978-180B-4172-B7D6-63C72485DE32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopLearn.Core", "TopLearn.Core\TopLearn.Core.csproj", "{B512B978-180B-4172-B7D6-63C72485DE32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
