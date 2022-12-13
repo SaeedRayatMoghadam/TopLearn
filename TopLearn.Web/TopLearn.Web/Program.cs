@@ -22,6 +22,7 @@ builder.Services.AddDbContext<TopLearnContext>(option =>
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddScoped<IWalletService, WalletService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 
 //Authentication
@@ -54,7 +55,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(

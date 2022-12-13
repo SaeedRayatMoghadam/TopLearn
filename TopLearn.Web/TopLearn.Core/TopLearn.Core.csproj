@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Convertors\" />
     <Folder Include="DTOs\Account\" />
+    <Folder Include="DTOs\AdminPanel\" />
     <Folder Include="Utilities\" />
     <Folder Include="Security\" />
     <Folder Include="Interfaces\" />
