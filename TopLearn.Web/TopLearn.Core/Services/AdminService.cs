@@ -1,4 +1,5 @@
-﻿using TopLearn.Core.DTOs.AdminPanel;
+﻿using Microsoft.EntityFrameworkCore;
+using TopLearn.Core.DTOs.AdminPanel;
 using TopLearn.Core.Interfaces;
 using TopLearn.Core.Security;
 using TopLearn.Core.Utilities;
@@ -32,12 +33,12 @@ public class AdminService : IAdminService
 
         if (user.Image != null)
         {
-            
-        newUser.Avatar = CodeGenerator.Generate() + Path.GetExtension(user.Image.FileName);
-        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/useravatars", newUser.Avatar);
 
-        using var stream = new FileStream(imagePath, FileMode.Create);
-        user.Image.CopyTo(stream);
+            newUser.Avatar = CodeGenerator.Generate() + Path.GetExtension(user.Image.FileName);
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/useravatars", newUser.Avatar);
+
+            using var stream = new FileStream(imagePath, FileMode.Create);
+            user.Image.CopyTo(stream);
         }
 
         return _accountService.Register(newUser);
@@ -53,6 +54,41 @@ public class AdminService : IAdminService
                 UserId = userId
             });
             _context.SaveChanges();
+        }
+    }
+
+    public void EditUserRoles(List<int> roleIds, int userId)
+    {
+        _context.UserRoles.Where(ur => ur.UserId == userId).ToList()
+            .ForEach(ur => _context.UserRoles.RemoveRange(ur));
+
+        AddUserRoles(roleIds, userId);
+    }
+
+    public void EditUser(EditUserViewModel user)
+    {
+        var editUser = _context.Users.Find(user.UserId);
+
+        editUser.Email = user.Email;
+
+        if (!string.IsNullOrEmpty(user.Password))
+            editUser.Password = PasswordHelper.EncodeToMd5(user.Password);
+
+        if (user.Image != null)
+        {
+            if (user.CurrentImage != "Default.jpg")
+            {
+                var currentImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/usersavatar",
+                    user.CurrentImage);
+                if (File.Exists(currentImagePath))
+                    File.Delete(currentImagePath);
+            }
+
+            editUser.Avatar = CodeGenerator.Generate() + Path.GetExtension(user.Image.FileName);
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/usersavatar",
+                editUser.Avatar);
+            using var stream = new FileStream(imagePath, FileMode.Create);
+            stream.CopyTo(stream);
         }
     }
 
@@ -80,5 +116,19 @@ public class AdminService : IAdminService
         result.Users = users.OrderBy(u => u.RegisterDate).Skip(skip).Take(take).ToList();
 
         return result;
+    }
+
+    public EditUserViewModel GetUserForAdminEdit(int userId)
+    {
+        return _context.Users.Where(u => u.Id == userId)
+            .Include(u => u.UserRoles)
+            .Select(u => new EditUserViewModel()
+            {
+                UserId = u.Id,
+                UserName = u.UserName,
+                Email = u.Email,
+                CurrentImage = u.Avatar,
+                Roles = u.UserRoles.Select(r => r.Id).ToList()
+            }).Single();
     }
 }
