@@ -125,4 +125,18 @@ public class UserService : IUserService
     {
         return _context.Users.Single(u => u.UserName == username).Id;
     }
+
+    public UserInfoDto GetUserInfo(int userId)
+    {
+        var user = _context.Users.Find(userId);
+
+        var userInfo = new UserInfoDto()
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+            RegisterDate = user.RegisterDate
+        };
+
+        return userInfo;
+    }
 }

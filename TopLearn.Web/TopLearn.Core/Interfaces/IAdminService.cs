@@ -6,6 +6,7 @@ namespace TopLearn.Core.Interfaces;
 public interface IAdminService
 {
     UserManagementViewModel GetUsers(int pageId=1, string emailFilter="",string usernameFilter="");
+    UserManagementViewModel GetDeletedUsers(int pageId=1, string emailFilter="",string usernameFilter="");
     EditUserViewModel GetUserForAdminEdit(int userId);
 
     int AddUser(CreateUserViewModel user);
@@ -13,4 +14,5 @@ public interface IAdminService
     List<Role> GetRoles();
     void AddUserRoles(List<int> roleIds, int userId);
     void EditUserRoles(List<int> roleIds, int userId);
+    void DeleteUser(int userId);
 } 

@@ -9,6 +9,7 @@ public interface IUserService
     int GetUserId(string username);
     EditProfileViewModel GetUserForEditProfile(string username);
     UserInfoDto GetUserInfo(string username);
+    UserInfoDto GetUserInfo(int userId);
     UserPanelSideBarDto GetUserPanelSideBarInfo(string username);
 
     bool IsUserNameExist(string username);

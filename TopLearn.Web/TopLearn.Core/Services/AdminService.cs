@@ -131,4 +131,33 @@ public class AdminService : IAdminService
                 Roles = u.UserRoles.Select(r => r.Id).ToList()
             }).Single();
     }
+
+    public UserManagementViewModel GetDeletedUsers(int pageId = 1, string emailFilter = "", string usernameFilter = "")
+    {
+        IQueryable<User> users = _context.Users.IgnoreQueryFilters().Where(u => u.IsDelete);
+
+        if (!string.IsNullOrEmpty(emailFilter))
+            users = users.Where(u => u.Email.Contains(emailFilter));
+
+        if (!string.IsNullOrEmpty(usernameFilter))
+            users = users.Where(u => u.UserName.Contains(usernameFilter));
+
+        int take = 1;
+        int skip = (pageId - 1) * take;
+
+        var result = new UserManagementViewModel();
+        result.CurrentPage = pageId;
+        result.PageCount = users.Count() / take;
+        result.Users = users.OrderBy(u => u.RegisterDate).Skip(skip).Take(take).ToList();
+
+        return result;
+    }
+
+    public void DeleteUser(int userId)
+    {
+        var user = _context.Users.Where(u => u.Id == userId).Single();
+        user.IsDelete = true;
+        _context.Users.Update(user);
+        _context.SaveChanges();
+    }
 }
