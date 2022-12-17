@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
+    <Folder Include="Entities\Course\" />
     <Folder Include="Entities\User\" />
   </ItemGroup>
 

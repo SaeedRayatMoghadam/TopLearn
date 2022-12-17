@@ -23,6 +23,7 @@ builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddScoped<IWalletService, WalletService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
 
 
 //Authentication

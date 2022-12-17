@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TopLearn.Data.Entities.Course;
 using TopLearn.Data.Entities.User;
 using TopLearn.Data.Entities.Wallet;
 
@@ -21,6 +22,13 @@ public class TopLearnContext:DbContext
 
     public DbSet<Transaction> Transactions { get; set; }
     public DbSet<TransactionTypes> TransactionTypes { get; set; }
+
+
+    #region Course
+
+    public DbSet<Category> Categories { get; set; }
+
+    #endregion
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

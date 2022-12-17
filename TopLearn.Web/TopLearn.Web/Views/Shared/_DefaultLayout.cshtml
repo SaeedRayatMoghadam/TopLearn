@@ -61,9 +61,9 @@
         </div>
     </div>
 
-    <!-- main manu -->
-    <partial name="_MainMenu" />
-    <!-- /main manu -->
+<!-- main manu -->
+@await Component.InvokeAsync("Category")
+<!-- /main manu -->
     <!-- content -->
     @RenderBody()
     <!-- /content -->
